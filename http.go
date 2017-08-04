@@ -31,6 +31,12 @@ func NewHttp(req *http.Request) *Http {
 	return h
 }
 
+func NewHttpWithoutCookies(req *http.Request) *Http {
+	obj := NewHttp(req)
+	obj.Cookies = ""
+	return obj
+}
+
 var querySecretFields = []string{"password", "passphrase", "passwd", "secret"}
 
 func sanitizeQuery(query url.Values) url.Values {
